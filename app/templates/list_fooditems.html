@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Food Items for {{ restaurant.name }}</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Food Items for {{ restaurant.name }}</h2>
+        <a href="{{ url_for('add_fooditem', restaurant_id=restaurant.id) }}" class="btn btn-primary mb-3">Add Food Item</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fooditem in fooditems %}
+                <tr>
+                    <td>{{ fooditem.id }}</td>
+                    <td>{{ fooditem.name }}</td>
+                    <td>{{ fooditem.price }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_fooditem', restaurant_id=restaurant.id, id=fooditem.id) }}" class="btn btn-warning">Edit</a>
+                        <form action="{{ url_for('delete_fooditem', restaurant_id=restaurant.id, id=fooditem.id) }}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

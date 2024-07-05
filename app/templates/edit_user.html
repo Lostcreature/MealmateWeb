@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>{{ 'Add' if request.path.endswith('add') else 'Edit' }} User</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>{{ 'Add' if request.path.endswith('add') else 'Edit' }} User</h2>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.username.label(class="form-control-label") }}
+                {{ form.username(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label(class="form-control-label") }}
+                {{ form.email(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label(class="form-control-label") }}
+                {{ form.password(class="form-control") }}
+            </div>
+            <button type="submit" class="btn btn-primary">{{ 'Add' if request.path.endswith('add') else 'Edit' }}</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Food Items</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Food Items</h2>
+        <a href="/fooditem/add" class="btn btn-primary mb-3">Add Food Item</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Restaurant ID</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for food_item in food_items %}
+                <tr>
+                    <td>{{ food_item.id }}</td>
+                    <td>{{ food_item.name }}</td>
+                    <td>${{ food_item.price }}</td>
+                    <td>{{ food_item.restaurant_id }}</td>
+                    <td>
+                        <a href="/fooditem/edit/{{ food_item.id }}" class="btn btn-warning">Edit</a>
+                        <form action="/fooditem/delete/{{ food_item.id }}" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
