@@ -4,3 +4,7 @@ Flask-SQLAlchemy
 Flask-Login
 Flask-Bootstrap
 Flask-WTF
+mysql-connector-python==8.0.23
+flask_migrate
+flask_cors
+mysql-connector-python
