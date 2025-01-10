@@ -162,4 +162,19 @@ def api_nearby_restaurants():
     print(f"Nearby restaurants: {nearby_restaurants}")  # Debugging
     return jsonify({'nearby_restaurants': nearby_restaurants})
 
+@app.route('/api/restaurant/<int:id>', methods=['GET'])
+def api_restaurant_details(id):
+    restaurant = Restaurant.query.get_or_404(id)
+    # Return restaurant details in the expected JSON format
+    return jsonify({
+        'id': restaurant.id,
+        'name': restaurant.name,
+        'address': restaurant.address,
+        'latitude': restaurant.latitude,
+        'longitude': restaurant.longitude,
+        'image_url': restaurant.image_url,
+        'description': restaurant.description
+    })
+
+
 

@@ -20,7 +20,9 @@ class Restaurant(db.Model):
     latitude = db.Column(db.Float, nullable=False)
     longitude = db.Column(db.Float, nullable=False)
     image_url = db.Column(db.String(250), nullable=False)
+    description = db.Column(db.Text, nullable=True)  # Add description column
     food_items = db.relationship('FoodItem', backref='restaurant', lazy=True)
+
 
 class FoodItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
